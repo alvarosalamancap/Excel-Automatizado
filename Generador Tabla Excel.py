@@ -1,5 +1,12 @@
-import openpyxl
-from openpyxl.styles import Font, Border, Side
+try:
+    import openpyxl
+    from openpyxl.styles import Font, Border, Side
+except ImportError:
+    print("La biblioteca openpyxl no está instalada. Se procederá con la instalación.")
+    import subprocess
+    subprocess.run(["pip", "install", "openpyxl"])
+    import openpyxl
+    from openpyxl.styles import Font, Border, Side
 
 def crear_tabla_excel():
     # Preguntar al usuario por el número de filas y columnas
