@@ -9,12 +9,15 @@ except ImportError:
     from openpyxl.styles import Font, Border, Side
 
 def crear_tabla_excel():
+    print("------------------------------------------------------------")
+    print("Bienvenidos al Generador de Tabla Excel by @alvarosalamancap")
+    print("------------------------------------------------------------")
     # Preguntar al usuario por el número de filas y columnas
     num_filas = int(input("Ingrese el número de filas: "))
     num_columnas = int(input("Ingrese el número de columnas: "))
 
     # Preguntar si desea los nombres de las columnas en negrita
-    formato_negrita = input("¿Quiere los nombres de las columnas en negrita? (Sí:S / No:N): ").lower() == 's'
+    formato_negrita = input(" -> ¿Quiere los nombres de las columnas en negrita? (Sí:S / No:N): ").lower() == 's'
 
     # Crear un nuevo libro de trabajo y seleccionar la hoja activa
     libro = openpyxl.Workbook()
@@ -31,12 +34,14 @@ def crear_tabla_excel():
             hoja.cell(row=1, column=col_num, value=nombre_columna)
 
     # Preguntar al usuario por los nombres de las filas y escribirlos en la primera columna
+    print("")
+    print("-----Nombre de Filas-----")
     for fila_num in range(2, num_filas + 2):
         nombre_fila = input(f"Ingrese el nombre de la fila {fila_num - 1}: ")
         hoja.cell(row=fila_num, column=1, value=nombre_fila)
 
     # Preguntar si desea agregar bordes
-    agregar_bordes = input("¿Quiere agregar bordes a la tabla? (Sí:S / No:N): ").lower() == 's'
+    agregar_bordes = input(" -> ¿Quiere agregar bordes a la tabla? (Sí:S / No:N): ").lower() == 's'
 
     # Agregar bordes si es seleccionado
     if agregar_bordes:
